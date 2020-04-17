@@ -5,6 +5,7 @@ import br.com.apirestkotlin.documents.Funcionario
 import br.com.apirestkotlin.enum.PerfilEnum
 import br.com.apirestkotlin.repository.EmpresaRepository
 import br.com.apirestkotlin.repository.FuncionarioRepository
+import br.com.apirestkotlin.repository.LancamentoRepository
 import br.com.apirestkotlin.services.FuncionarioService
 import br.com.apirestkotlin.utils.SenhaUtils
 import org.springframework.boot.CommandLineRunner
@@ -12,11 +13,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ApirestkotlinApplication (val empresaRepository: EmpresaRepository, val funcionarioRepository: FuncionarioRepository) : CommandLineRunner{
+class ApirestkotlinApplication (val empresaRepository: EmpresaRepository, val funcionarioRepository: FuncionarioRepository,
+								val lancamentoRepository: LancamentoRepository) : CommandLineRunner{
 
 	override fun run(vararg args: String?) {
 		empresaRepository.deleteAll()
 		funcionarioRepository.deleteAll()
+		lancamentoRepository.deleteAll()
 
 		val empresa: Empresa = Empresa("Empresa", "104438870000146")
 		val empresaSave = empresaRepository.save(empresa)
