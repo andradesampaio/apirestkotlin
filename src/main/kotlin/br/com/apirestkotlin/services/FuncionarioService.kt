@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class FuncionarioService(val funcionarioRepository: FuncionarioRepository) {
+class FuncionarioService constructor(val funcionarioRepository: FuncionarioRepository) {
 
     fun findByCpf(cpf: String): Funcionario? = funcionarioRepository.findByCpf(cpf)
     fun findByEmail(email: String): Funcionario? = funcionarioRepository.findByEmail(email)
